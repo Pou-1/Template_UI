@@ -1,0 +1,30 @@
+.border-animation {
+  background-color: white;
+  height: 500px;
+  border-radius: 10px;
+  position: relative;
+}
+
+.border-animation:after {
+  content: "";
+  background: linear-gradient(45deg, #ccc 48.9%, #0170bb 49%);
+  background-size: 300% 300%;
+  border-radius: 10px;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  height: calc(100% + 10px);
+  width: calc(100% + 10px);
+  z-index: -1;
+  animation: borderGradient 8s linear both infinite;
+}
+
+@keyframes borderGradient {
+  0%,
+  100% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
