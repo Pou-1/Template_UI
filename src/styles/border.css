@@ -1,0 +1,74 @@
+.border-animation:hover:after {
+  content: "";
+  background: linear-gradient(45deg, transparent 48.9%, white 49%);
+  background-size: 300% 300%;
+  border-radius: 10px;
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  height: calc(100% + 10px);
+  width: calc(100% + 10px);
+  z-index: -1;
+  animation: borderGradient 4s linear both normal;
+}
+
+@keyframes borderGradient {
+  0%,
+  100% {
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+}
+
+.border-style > div {
+  right: 10%;
+  width: 20%;
+  position: absolute;
+  background: #242424;
+  height: 50px;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+.border-style > div::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  height: 50px;
+  right: -25px;
+  width: 25px;
+  border-top-left-radius: 25px;
+  box-shadow: 0 -25px 0 0 #242424;
+}
+
+.border-style > div::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  height: 50px;
+  left: -25px;
+  width: 25px;
+  border-top-right-radius: 25px;
+  box-shadow: 0 -25px 0 0 #242424;
+}
+
+@keyframes fadeInOut {
+  0% {
+    transform: translateY(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+.fadeAnim {
+  animation: fadeInOut 0.5s;
+}
