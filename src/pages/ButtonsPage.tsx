@@ -10,7 +10,7 @@ import "../styles/border.css";
 
 function ButtonsPage() {
   return (
-    <div className="flex-center w-screen h-screen flex-wrap gap-10">
+    <div className="flex-center w-full h-screen flex-wrap gap-10">
       <Button1 />
       <Button2 />
       <Button3 />

@@ -18,7 +18,7 @@ Template-UI is built with React and TypeScript (TSX). This guide will help you s
 
 1. Clone the repository:
 
-   ```bash
+  ```bash
    git clone https://github.com/Pou-1/Template_UI.git
   ```
 Navigate to the project directory:
