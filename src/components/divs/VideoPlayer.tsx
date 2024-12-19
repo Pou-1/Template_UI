@@ -7,9 +7,10 @@ import "../../styles/input.css";
 
 interface VideoPlayerProps {
   videoSources: { webm: string; mp4: string };
+  classname: string;
 }
 
-const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources,classname }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [timeOfVideo, setTimeOfVideo] = useState(0);
@@ -111,12 +112,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
   return (
     <div
       ref={containerRef}
-      className={`relative w-full mb-96 border-2 m-2 rounded-lg overflow-hidden
-        ${
-            isMouseActive
-              ? "cursor-pointer"
-              : "cursor-none"
-          }
+      className={`relative mb-96 border-2 m-2 rounded-lg overflow-hidden ${classname} 
+            ${!isPlaying
+                ? "cursor-pointer"
+                : isMouseActive && isPlaying ? "cursor-pointer"
+                : 'cursor-none'
+            }
         `}
       onMouseMove={handleMouseMove}
     >
@@ -130,9 +131,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
       <div
         className={`absolute top-0 w-full h-full flex flex-col bg-transparent trans-fast 
             ${!isPlaying
-                ? "backdrop-blur-md"
-                : isMouseActive && isPlaying ? "backdrop-blur-md"
-                : 'opacity-0 pointer-events-none backdrop-blur-0 trans-fast'
+                ? ""
+                : isMouseActive && isPlaying ? ""
+                : 'opacity-0 pointer-events-none trans-fast'
             }
         `}
       >
@@ -157,7 +158,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
           </button>
         </div>
 
-        <div className={`gap-5 m-4 flex-center rounded-lg bg-red-400 w-auto p-2 opacity-0  trans-fast 
+        <div className={`gap-5 cursor-default m-4 flex-center rounded-lg bg-red-400 w-auto p-2 opacity-0  trans-fast 
                 ${!isPlaying
                     ? "opacity-100"
                     : isMouseActive && isPlaying ? "opacity-100"
@@ -181,13 +182,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
             >
               <FullscreenIcon classname="size-7" />
             </button>
-            <div className="hover:bg-red-500 gap-3 flex-center relative rounded-md p-2">
-                <button onClick={() => setisSoundChanged(!isSoundChanged)}>
+            <div className={`hover:bg-red-500 flex relative rounded-md`}>
+                <button onClick={() => setisSoundChanged(!isSoundChanged)} className="p-2">
                     <SoundIcon classname="size-7"/>
                 </button>
                 <input
                     type="range"
-                    className={`bg-transparent trans-fast ${isSoundChanged ? 'w-0 opacity-0' : 'w-fit opacity-100'}`}
+                    className={`bg-transparent trans-fast ${isSoundChanged ? '!w-0 opacity-0 mx-0' : 'mx-2 w-fit opacity-100'}`}
                 />
             </div>
           </div>
@@ -202,7 +203,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
               step="0.1"
               value={timeOfVideo}
               onChange={handleSeek}
-              className="w-full bg-transparent"
+              className="w-full bg-transparent trans-fast"
             />
           </div>
         </div>

@@ -12,7 +12,7 @@ function DivsPage() {
   return (
     <div className="flex-center w-full h-screen flex-wrap gap-10">
 
-      <VideoPlayer videoSources={videoSources}/>
+      <VideoPlayer videoSources={videoSources} classname="w-1/2"/>
 
       <div className="border-style rounded-md relative mt-10 bg-red-400 h-32 w-1/2">
         <div>Brat Haj</div>
