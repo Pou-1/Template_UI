@@ -128,28 +128,42 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
 
       {/* Overlay controlled by isMouseActive */}
       <div
-        className={`absolute top-0 w-full h-full flex flex-col bg-transparent trans-fast ${
-          isMouseActive
-            ? "backdrop-blur-md"
-            : "opacity-0 pointer-events-none backdrop-blur-0 trans-fast"
-        }`}
+        className={`absolute top-0 w-full h-full flex flex-col bg-transparent trans-fast 
+            ${!isPlaying
+                ? "backdrop-blur-md"
+                : isMouseActive && isPlaying ? "backdrop-blur-md"
+                : 'opacity-0 pointer-events-none backdrop-blur-0 trans-fast'
+            }
+        `}
       >
         <div
           className="w-full h-full flex-center"
           onClick={togglePlayPause}
         >
           <button
-            className={`text-white p-10 bg-red-400 hover:bg-red-500 trans-fast text-8xl rounded-2xl overflow-hidden ${isMouseActive ? 'opacity-100' : 'opacity-0'}`}
+            className={`text-white p-10 bg-red-400 hover:bg-red-500 trans-fast text-8xl rounded-full overflow-hidden
+                ${!isPlaying
+                    ? "opacity-100"
+                    : isMouseActive && isPlaying ? "opacity-100"
+                    : 'opacity-0'
+                }
+            `}
           >
             {isPlaying ? (
-              <PauseIcon classname="size-14" />
+              <PauseIcon classname="size-12" />
             ) : (
-              <PlayIcon classname="size-14" />
+              <PlayIcon classname="size-12" />
             )}
           </button>
         </div>
 
-        <div className={`gap-5 flex-center rounded-lg bg-red-400 w-full p-4 opacity-0 translate-y-3 trans-fast ${isMouseActive ? 'opacity-100' : 'opacity-0'} `}>
+        <div className={`gap-5 m-4 flex-center rounded-lg bg-red-400 w-auto p-2 opacity-0  trans-fast 
+                ${!isPlaying
+                    ? "opacity-100"
+                    : isMouseActive && isPlaying ? "opacity-100"
+                    : 'opacity-0'
+                }
+            `}>
           <div className="flex text-white px-2">
             <button
               className="hover:bg-red-500 rounded-md p-2"
@@ -177,8 +191,10 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
                 />
             </div>
           </div>
-          <div className="w-full gap-5 flex-center">
+          <div className="w-full gap-5 flex-center mr-4">
             <span>{formatTime(timeOfVideo)}</span>
+            <span>/</span>
+            <span>{formatTime(videoDuration)}</span>
             <input
               type="range"
               min="0"
@@ -188,7 +204,6 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources }) => {
               onChange={handleSeek}
               className="w-full bg-transparent"
             />
-            <span>{formatTime(videoDuration)}</span>
           </div>
         </div>
       </div>
