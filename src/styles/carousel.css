@@ -1,0 +1,5 @@
+.carousel{
+    display: grid;
+    grid-template-columns: auto 2px auto;
+    gap: 10px;
+}

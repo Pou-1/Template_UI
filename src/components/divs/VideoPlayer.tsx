@@ -112,7 +112,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoSources,classname }) => 
   return (
     <div
       ref={containerRef}
-      className={`relative mb-96 border-2 m-2 rounded-lg overflow-hidden ${classname} 
+      className={`relative border-2 m-2 rounded-lg overflow-hidden ${classname} 
             ${!isPlaying
                 ? "cursor-pointer"
                 : isMouseActive && isPlaying ? "cursor-pointer"
