@@ -7,6 +7,7 @@ import Button6 from "../components/buttons/Button6";
 import Button7 from "../components/buttons/Button7";
 import Button8 from "../components/buttons/Button8";
 import Button9 from "../components/buttons/Button9";
+import Button10 from "../components/buttons/Button10";
 import "../styles/buttonStyles.css";
 import "../styles/border.css";
 
@@ -22,6 +23,7 @@ function ButtonsPage() {
 			<Button7 />
 			<Button8 />
 			<Button9 />
+			<Button10 />
 
 			<div className="border-animation relative cursor-pointer rounded-md w-32 h-20 bg-secondary trans-fast"></div>
 
