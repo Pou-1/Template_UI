@@ -7,7 +7,7 @@ import RotatingImage from "../components/parallax/RotatingImage";
 function ButtonsPage() {
   return (
     <div className="flex w-full min-h-screen flex-col">
-      <TextReveal text="Hi and Welcome" className="mt-10" className2="text-8xl"/>
+      <TextReveal text="CLEM EST UN.E CHIEN.NNE" className="mt-10" className2="text-8xl"/>
       <TextReveal2 text="Hi and Welcome" className="mt-10" className2="text-8xl"/>
       <ParallaxImage
         imgSrc="https://pbs.twimg.com/media/GchiZZoaMAA3HXh.jpg:large"
