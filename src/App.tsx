@@ -6,6 +6,7 @@ import ButtonsPage from "./pages/ButtonsPage";
 import ParallaxPage from "./pages/ParallaxPage";
 import DivsPage from "./pages/DivsPage";
 import InputPage from "./pages/InputPage";
+import ScrollPage from "./pages/ScrollPage";
 
 function App() {
   return (
@@ -36,6 +37,12 @@ function App() {
           >
             Input Page
           </Link>
+          <Link
+            to="/scroll"
+            className="px-4 w-40 py-2 bg-purple-500 text-white rounded hover:bg-purple-600"
+          >
+            Scroll Page
+          </Link>
         </nav>
         <div className="w-screen h-full">
           <Routes>
@@ -43,6 +50,7 @@ function App() {
             <Route path="/parallax" element={<ParallaxPage />} />
             <Route path="/divs" element={<DivsPage />} />
             <Route path="/input" element={<InputPage />} />
+            <Route path="/scroll" element={<ScrollPage />} />
           </Routes>
         </div>
       </div>
